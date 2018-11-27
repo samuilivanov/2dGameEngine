@@ -2,6 +2,9 @@
 #include <stdio.h>
 #include <iostream>
 
+SDL_Rect srcRect;
+SDL_Rect dstRect;
+
 // Constructor and deconstructor
 Game::Game() {
 }
@@ -29,12 +32,14 @@ void Game::init(const char *title, int x, int y, int w, int h, bool fullscreen) 
 
 			gRenderer = SDL_CreateRenderer(gWindow, -1, 0);
 			if (gRenderer) {
-				SDL_SetRenderDrawColor(gRenderer, 255, 0, 0, 255);
+				SDL_SetRenderDrawColor(gRenderer, 255, 255, 255, 255);
 				printf("Renderer created successfully!\n");
 			}
 			isRunning = true;
 		}
 	}
+
+	playerTex = TextureManager::loadTexture("../assets/player.png", gRenderer);
 }
 
 void Game::eventHandler() {
@@ -48,10 +53,14 @@ void Game::eventHandler() {
 void Game::update() {
 	cnt++;
 	std::cout << cnt << std::endl;
+	dstRect.w = 64;
+	dstRect.h = 64;
+	dstRect.x = cnt;
 }
 
 void Game::renderer() {
 	SDL_RenderClear(gRenderer);
+	SDL_RenderCopy(gRenderer, playerTex, NULL, &dstRect);
 	SDL_RenderPresent(gRenderer);
 }
 

@@ -2,6 +2,8 @@
 #define GAME_H
 
 #include "SDL2/SDL.h"
+#include "SDL2/SDL_image.h"
+#include "TextureManager.h"
 
 class Game {
 
@@ -10,6 +12,8 @@ private:
 	bool isRunning = false;
 	SDL_Window *gWindow = nullptr;
 	SDL_Renderer *gRenderer = nullptr;
+	SDL_Texture *playerTex = nullptr;
+
 public:
 
 	Game();
