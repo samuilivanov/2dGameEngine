@@ -1,10 +1,9 @@
 #include "Game.h"
+#include "GameObject.h"
 #include <stdio.h>
 #include <iostream>
 
-SDL_Rect srcRect;
-SDL_Rect dstRect;
-
+GameObject *player;
 // Constructor and deconstructor
 Game::Game() {
 }
@@ -38,8 +37,9 @@ void Game::init(const char *title, int x, int y, int w, int h, bool fullscreen) 
 			isRunning = true;
 		}
 	}
+	player = new GameObject("../assets/player.png", gRenderer, 0, 0);
+	if (player == nullptr) { printf("ops"); }
 
-	playerTex = TextureManager::loadTexture("../assets/player.png", gRenderer);
 }
 
 void Game::eventHandler() {
@@ -52,15 +52,13 @@ void Game::eventHandler() {
 
 void Game::update() {
 	cnt++;
-	std::cout << cnt << std::endl;
-	dstRect.w = 64;
-	dstRect.h = 64;
-	dstRect.x = cnt;
+	//std::cout << cnt << std::endl;
+	player->Update();
 }
 
 void Game::renderer() {
 	SDL_RenderClear(gRenderer);
-	SDL_RenderCopy(gRenderer, playerTex, NULL, &dstRect);
+	player->Render();
 	SDL_RenderPresent(gRenderer);
 }
 

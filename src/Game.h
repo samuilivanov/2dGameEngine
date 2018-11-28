@@ -12,7 +12,6 @@ private:
 	bool isRunning = false;
 	SDL_Window *gWindow = nullptr;
 	SDL_Renderer *gRenderer = nullptr;
-	SDL_Texture *playerTex = nullptr;
 
 public:
 
