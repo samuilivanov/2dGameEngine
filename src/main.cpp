@@ -1,15 +1,16 @@
 #include "Game.h"
 #include <iostream>
 
-int main(int argc, char **argv) {
+int main(int argc, char **argv)
+{
 	const int SCREEN_FPS = 60;
 	const int SCREEN_TICKS_PER_SECOND = 1000 / SCREEN_FPS;
 	Uint32 frameStart;
 	int frameTime;
 
 	Game *game = new Game();
-	game->init("Sambio 2D Game engine", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
-		800, 600, false);
+	game->init("Sambio 2D Game engine", SDL_WINDOWPOS_CENTERED,
+                        SDL_WINDOWPOS_CENTERED, 800, 640, false);
 	
 	while (game->running()) {
 

@@ -1,30 +1,40 @@
 #include "Game.h"
 #include "GameObject.h"
+#include "Map.h"
 #include <stdio.h>
 #include <iostream>
 
 GameObject *player;
-// Constructor and deconstructor
-Game::Game() {
+SDL_Renderer *Game::gRenderer = nullptr;
+Map *map;
+
+Game::Game()
+{
 }
 
-Game::~Game() {
+Game::~Game()
+{
 }
 
 // Start up SDL and subsistems
-void Game::init(const char *title, int x, int y, int w, int h, bool fullscreen) {
+void Game::init(const char *title, int x, int y, int w, int h,
+                bool fullscreen)
+{
 	int flag = 0;
-	if (fullscreen) { flag = 1; }
+	if (fullscreen)
+                flag = 1;
 
 	if (SDL_Init(SDL_INIT_EVERYTHING) < 0) {
-		printf("SDL could not initialize! SDL_Error: %s\n", SDL_GetError());
+		printf("SDL could not initialize! SDL_Error: %s\n",
+                                SDL_GetError());
 		isRunning = false;
 	} else {
 		printf("SDL initialized...\n");
 
 		gWindow = SDL_CreateWindow(title, x, y, w, h, flag);
 		if (gWindow == nullptr) {
-			printf("Window could not be created! SDL_Error: %s\n", SDL_GetError());
+			printf("Window could not be created! SDL_Error: %s\n",
+                                        SDL_GetError());
 			isRunning = false;
 		} else {
 			printf("Window created successfully!\n");
@@ -37,8 +47,9 @@ void Game::init(const char *title, int x, int y, int w, int h, bool fullscreen) 
 			isRunning = true;
 		}
 	}
-	player = new GameObject("../assets/player.png", gRenderer, 0, 0);
+	player = new GameObject("../assets/player.png", 0, 0);
 	if (player == nullptr) { printf("ops"); }
+        map = new Map();
 
 }
 
@@ -52,12 +63,12 @@ void Game::eventHandler() {
 
 void Game::update() {
 	cnt++;
-	//std::cout << cnt << std::endl;
 	player->Update();
 }
 
 void Game::renderer() {
 	SDL_RenderClear(gRenderer);
+        map->DrawMap();
 	player->Render();
 	SDL_RenderPresent(gRenderer);
 }
