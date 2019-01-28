@@ -3,6 +3,7 @@
 #include "map.h"
 #include "ECS/ecs.h"
 #include "ECS/components.h"
+#include <QMessageLogger>
 
 namespace SFGE {
 
@@ -14,31 +15,35 @@ namespace SFGE {
 
     Application::Application()
     {
-        std::cout << "App created" << std::endl;
+        SFGE_CORE_INFO("App created");
     }
     Application::~Application()
     {
-        std::cout << "App killed" << std::endl;
+        SFGE_CORE_INFO("App killed");
     }
 
+    // TODO want to move this init() in separete class
     void Application::init()
     {
         if (SDL_Init(SDL_INIT_EVERYTHING) < 0) {
-            std::cout << "SDL could not initialize! SDL_Error: " << SDL_GetError();
+            SFGE_CORE_FATAL("SDL could not initialize! SDL_Error: ");
+            // TODO: I want the SDL_GetError msg to print **** std::cout << "SDL could not initialize! SDL_Error: " << SDL_GetError();
             isRunning = false;
         } else {
-            std::cout << "SDL initialized..." << std::endl;
+            SFGE_CORE_INFO("SDL initialized...");
+
             // TODO it should not be hard coded for now is OK
             gWindow = SDL_CreateWindow("Sambio 2D Game engine", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 640, false);
             if (gWindow == nullptr) {
-                std::cout << "Window could not be created! SDL_Error: " << SDL_GetError();
+                SFGE_CORE_FATAL("Window could not be created! SDL_Error: ");
+                //std::cout << "Window could not be created! SDL_Error: " << SDL_GetError();
                 isRunning = false;
             } else {
-                std::cout << "Window created successfully!" << std::endl;
+                SFGE_CORE_INFO("Window created successfully!");
                 gRenderer = SDL_CreateRenderer(gWindow, -1, 0);
                 if (gRenderer) {
                     SDL_SetRenderDrawColor(gRenderer, 255, 255, 255, 255);
-                    std::cout << "Renderer created successfully!" << std::endl;
+                    SFGE_CORE_INFO("Renderer created successfully!");
                 }
                 isRunning = true;
             }
@@ -97,7 +102,7 @@ namespace SFGE {
         SDL_DestroyWindow(gWindow);
         SDL_DestroyRenderer(gRenderer);
         SDL_Quit();
-        std::cout << "Game cleaned!" << std::endl;
+        SFGE_CORE_INFO("Game cleaned!");
     }
 
     bool Application::running() {

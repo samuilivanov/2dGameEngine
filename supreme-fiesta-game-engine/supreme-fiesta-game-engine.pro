@@ -5,6 +5,7 @@
 #-------------------------------------------------
 
 QT       -= gui
+QT       += core
 
 TARGET = supreme-fiesta-game-engine
 TEMPLATE = lib
@@ -28,7 +29,8 @@ SOURCES += \
     src/texturemanager.cpp \
     src/map.cpp \
     src/vector2d.cpp \
-    src/Platform/Linux/linuxwindow.cpp
+    src/Platform/Linux/linuxwindow.cpp \
+    src/log.cpp
 
 HEADERS += \
     src/application.h \
@@ -46,7 +48,8 @@ HEADERS += \
     src/ECS/transformcomponent.h \
     src/vector2d.h \
     src/Platform/Linux/linuxwindow.h \
-    src/window.h
+    src/window.h \
+    src/log.h
 
 LIBS += -lSDL2 -lSDL2_image
 
