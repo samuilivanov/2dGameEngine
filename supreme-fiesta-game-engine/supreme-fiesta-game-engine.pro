@@ -26,11 +26,11 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     src/application.cpp \
     sfgepch.cpp \
-    src/texturemanager.cpp \
+    src/Utils/texturemanager.cpp \
     src/map.cpp \
     src/vector2d.cpp \
     src/Platform/Linux/linuxwindow.cpp \
-    src/log.cpp
+    src/Utils/log.cpp
 
 HEADERS += \
     src/application.h \
@@ -38,7 +38,7 @@ HEADERS += \
     sfge.h \
     sfgepch.h \
     src/entrypoint.h \
-    src/texturemanager.h \
+    src/Utils/texturemanager.h \
     src/map.h \
     src/ECS/collidercomponent.h \
     src/ECS/components.h \
@@ -49,7 +49,7 @@ HEADERS += \
     src/vector2d.h \
     src/Platform/Linux/linuxwindow.h \
     src/window.h \
-    src/log.h
+    src/Utils/log.h
 
 LIBS += -lSDL2 -lSDL2_image
 

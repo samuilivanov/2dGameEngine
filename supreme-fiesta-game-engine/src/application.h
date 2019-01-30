@@ -1,8 +1,9 @@
 #ifndef APPLICATION_H
 #define APPLICATION_H
 
-#include "core.h"
-#include "log.h"
+#include "src/core.h"
+#include "Utils/log.h"
+#include "src/window.h"
 #include <SDL2/SDL.h>
 
 namespace SFGE {
@@ -10,23 +11,15 @@ namespace SFGE {
     class SFGE_API Application
     {
     private:
-        bool isRunning = false;
-        SDL_Window *gWindow;
+        std::unique_ptr<Window> m_Window;
     public:
 
         Application();
         ~Application();
 
-        static SDL_Renderer *gRenderer;
-        static SDL_Event event;
-
-        void init();
         void run();
-        void eventHandler();
-        void update();
-        void renderer();
-        void clear();
-        bool running();
+        // TODO: event methods to be added as well with event class
+
     };
 
     Application *createApplication();

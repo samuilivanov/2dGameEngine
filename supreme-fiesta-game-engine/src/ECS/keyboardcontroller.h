@@ -2,6 +2,7 @@
 #include "ecs.h"
 #include "components.h"
 #include "../core.h"
+#include "src/Platform/Linux/linuxwindow.h"
 
 namespace SFGE {
 
@@ -17,8 +18,8 @@ namespace SFGE {
 
         void update() override
         {
-            if (Application::event.type == SDL_KEYDOWN) {
-                switch (Application::event.key.keysym.sym) {
+            if (LinuxWindow::event.type == SDL_KEYDOWN) {
+                switch (LinuxWindow::event.key.keysym.sym) {
                 case SDLK_w:
                     transform->velocity.y = -1;
                     break;
@@ -34,8 +35,8 @@ namespace SFGE {
                 }
             }
 
-            if (Application::event.type == SDL_KEYUP) {
-                switch (Application::event.key.keysym.sym) {
+            if (LinuxWindow::event.type == SDL_KEYUP) {
+                switch (LinuxWindow::event.key.keysym.sym) {
                 case SDLK_w:
                     transform->velocity.y = 0;
                     break;

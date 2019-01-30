@@ -1,8 +1,8 @@
 #ifndef TEXTUREMANAGER_H
 #define TEXTUREMANAGER_H
 
-#include "core.h"
-#include "application.h"
+#include "src/core.h"
+#include "../application.h"
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 

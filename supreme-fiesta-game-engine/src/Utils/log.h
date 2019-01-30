@@ -3,7 +3,7 @@
 
 #include <QtGlobal>
 #include <QDebug>
-#include "core.h"
+#include "src/core.h"
 
 namespace SFGE {
 

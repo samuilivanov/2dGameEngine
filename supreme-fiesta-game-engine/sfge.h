@@ -2,7 +2,7 @@
 #define SFGE_H
 
 #include "src/application.h"
-#include "src/log.h"
+#include "src/Utils/log.h"
 
 //-------------------------------------------------
 //

@@ -1,7 +1,7 @@
 #ifndef VECTOR2D_H
 #define VECTOR2D_H
 
-#include "core.h"
+#include "src/core.h"
 #include "sfgepch.h"
 
 namespace SFGE {

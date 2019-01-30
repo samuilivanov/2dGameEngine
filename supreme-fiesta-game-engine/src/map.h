@@ -1,7 +1,7 @@
 #ifndef MAP_H
 #define MAP_H
 
-#include "core.h"
+#include "src/core.h"
 #include "sfgepch.h"
 
 namespace SFGE {

@@ -1,4 +1,5 @@
 #include "texturemanager.h"
+#include "src/Platform/Linux/linuxwindow.h"
 #include "sfgepch.h"
 
 namespace SFGE {
@@ -8,7 +9,7 @@ namespace SFGE {
         if (tmpSurface == nullptr) {
             printf("Failed to load texture image!");
         }
-        SDL_Texture *tmpTex = SDL_CreateTextureFromSurface(Application::gRenderer,
+        SDL_Texture *tmpTex = SDL_CreateTextureFromSurface(LinuxWindow::gRenderer,
                                                              tmpSurface);
         SDL_FreeSurface(tmpSurface);
         return tmpTex;
@@ -16,7 +17,7 @@ namespace SFGE {
 
     void TextureManager::draw(SDL_Texture *tex, SDL_Rect src, SDL_Rect dst)
     {
-            SDL_RenderCopy(Application::gRenderer, tex, &src, &dst);
+            SDL_RenderCopy(LinuxWindow::gRenderer, tex, &src, &dst);
     }
 
 }

@@ -5,7 +5,7 @@
 #include "components.h"
 #include "sfgepch.h"
 #include "../application.h"
-#include "src/texturemanager.h"
+#include "src/Utils/texturemanager.h"
 
 namespace SFGE {
 
